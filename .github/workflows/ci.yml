@@ -1,0 +1,25 @@
+name: CI
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - master
+
+jobs:
+  coding-conventions:
+    name: Coding conventions
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.9.10
+          cache: 'pip'
+          cache-dependency-path: requirements-dev.txt
+      - name: Setup environment
+        run:  pip install -r requirements-dev.txt
+      - name: Run coding-conventions tests
+        run: make check
