@@ -1,0 +1,10 @@
+repos:
+  - repo: local
+    hooks:
+      - id: check_code_quality
+        name: Check code quality
+        stages: [commit]
+        language: system
+        entry:  make check
+        verbose: true
+        pass_filenames: false
