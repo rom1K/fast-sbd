@@ -3,11 +3,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-CYAN="\e[1;96m"
-GREEN="\e[1;92m"
-RESET="\e[0m"
-
-
 echo -e "${GREEN}Checking ${CYAN}black${GREEN}${RESET}"
 black --check src
 
@@ -19,3 +14,5 @@ mypy src
 
 echo -e "${GREEN}Checking ${CYAN}pydocstyle${GREEN}${RESET}"
 pydocstyle src
+
+echo -e "${GREEN}Code check passed !${RESET}"
